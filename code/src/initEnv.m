@@ -103,7 +103,6 @@ end
 function addDependencies()
 
     pth = fullfile(fileparts(mfilename('fullpath')), '..');
-    addpath(fullfile(pth, 'lib', 'check_my_code'));
     addpath(genpath(fullfile(pth, 'lib', 'CPP_SPM', 'src')));
     addpath(genpath(fullfile(pth, 'lib', 'CPP_SPM', 'lib')));
     addpath(fullfile(pth, 'src'));

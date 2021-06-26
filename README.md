@@ -41,8 +41,45 @@ This will set up everything automatically in your current directory.
 
 Clone input data: raw data set of visual localizer from the CPP lab
 
-```
+```bash
 datalad clone -d . git@gin.g-node.org:/cpp-lln-lab/CPP_visMotion-raw.git inputs/raw
+```
+
+You will need to set up a proper alias to launch matlab from your mac or linux
+command line to tdo the next step:
+
+```bash
+matlab -nodisplay -nosplash -nodesktop -r "run('code/src/demoRunSpatialPrepro.m'); exit;"
+
+
+# OR
+
+matlab -nodisplay -nosplash -nodesktop -r 'run code/src/demoRunSpatialPrepro.m; exit;'
+```
+
+To make it easier to understand, when can use some bash variables
+
+```bash
+MATFLAGS="-nodisplay -nosplash -nodesktop"
+cmd_to_run="run('code/src/demoRunSpatialPrepro.m'); exit;"
+matlab $MATFLAGS -r "$cmd_to_run"
+```
+
+And now we insert in a datalad run command
+
+```bash
+# THIS DOES NOT WORK
+datalad run -m "Try again to create a list of podcast titles" \
+ --input "inputs/raw" \
+ --output "outputs/derivatives" \
+ "matlab -nodisplay -nosplash -nodesktop -r 'run code/src/demoRunSpatialPrepro.m; exit;'"
+```
+
+```bash
+datalad run -m "Try again to create a list of podcast titles" \
+   --input "inputs/raw" \
+   --output "outputs/derivatives" \
+  'matlab $MATFLAGS -r "$cmd_to_run"'
 ```
 
 ## DataLad datasets and how to use them
