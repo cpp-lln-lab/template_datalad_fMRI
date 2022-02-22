@@ -3,18 +3,19 @@
 # Project <insert name>
 
 This repo is made with
-[cpp-lln-lab/template_datalad_fMRI](https://github.com/cpp-lln-lab/template_datalad_fMRI)
-(how to use it --> [check this guide](how-to-use-me.md))
+[cpp-lln-lab/template_datalad_fMRI](https://github.com/cpp-lln-lab/template_datalad_fMRI).
 
-## Add here below documentation regarding this project
+[⚠️ CHECK THE GUIDE ON HOW TO USE IT ⚠️](./how-to-use-me.md)
+
+## Add below documentation regarding this project
+
+## DataLad datasets and how to use them
 
 <!-- BELOW IS THE TEMPLATE README FOR DATALAD DATASET
 
 MODIFY AT WILL
 
  -->
-
-## DataLad datasets and how to use them
 
 This repository is a [DataLad](https://www.datalad.org/) dataset. It provides
 fine-grained data access down to the level of individual files, and allows for
