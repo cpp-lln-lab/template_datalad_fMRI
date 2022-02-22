@@ -47,6 +47,13 @@ if [ ! -z "${URL_DER_STATS}" ]; then
     cd "${root_dir}"
 fi
 
+if [ "${USE_CPP_SPM_DEV}" = true ]; then
+    cd code/lib/CPP_SPM
+    git checkout -b origin/dev
+    cd "${root_dir}"
+    datalad save -m 'switch CPP SPM to dev branch'
+fi
+
 datalad push --to origin -r
 
 echo "############################"
