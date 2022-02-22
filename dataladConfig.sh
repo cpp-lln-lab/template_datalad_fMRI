@@ -4,19 +4,19 @@
 
 # raw dataset url (either GIN or openneuro)
 # for DEMO use: git@gin.g-node.org:/cpp-lln-lab/CPP_visMotion-raw.git
-URL_RAW='git@gin.g-node.org:/cpp-lln-lab/CPP_visMotion-raw.git'
+URL_RAW=''
 
 # derivatives sibling url
 # for DEMO use: git@gin.g-node.org:/cpp_brewery/CPP_visMotion-derivatives.git
-URL_DER='git@gin.g-node.org:/cpp_brewery/CPP_visMotion-derivatives.git'
+URL_DER=''
 
 # derivatives/preproc sibling url
 # for DEMO use: git@gin.g-node.org:/cpp_brewery/CPP_visMotion-cpp_spm-preproc.git
-URL_DER_PREPROC='git@gin.g-node.org:/cpp_brewery/CPP_visMotion-cpp_spm-preproc.git'
+URL_DER_PREPROC=''
 
 # derivatives/stats sibling url
 # for DEMO use: git@gin.g-node.org:/cpp_brewery/CPP_visMotion-cpp_spm-stats.git
-URL_DER_STATS='git@gin.g-node.org:/cpp_brewery/CPP_visMotion-cpp_spm-stats.git'
+URL_DER_STATS=''
 
 if [ -z "${URL_RAW}" ]; then
     echo "Error: the URL for the raw cannot be empty"
