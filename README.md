@@ -1,7 +1,9 @@
 # Project <insert name>
 
-## Dataset structure
+[![made-with-datalad](https://www.datalad.org/badges/made_with.svg)](https://datalad.org)
 
-- All inputs (i.e. building blocks from other sources) are located in
-  `inputs/`.
-- All custom code is located in `code/`.
+This repo is made with
+[cpp-lln-lab/template_datalad_fMRI](https://github.com/cpp-lln-lab/template_datalad_fMRI)
+(how to use it --> [check this guide](how-to-use-me.md))
+
+## Add here below documentation regarding this project

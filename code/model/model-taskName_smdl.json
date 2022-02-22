@@ -1,0 +1,41 @@
+{
+  "Name": "Motion localizer",
+  "Description": "contrasts for the motion localizer dataset",
+  "Input": {
+    "task": "auditoryLocalizer"
+  },
+  "Steps": [
+    {
+      "Level": "run",
+      "Model": {
+        "X": [
+          "trial_type.static",
+          "trial_type.motion",
+          "trial_type.response",
+          "trans_x", "trans_y", "trans_z", "rot_x", "rot_y", "rot_z"
+        ]
+      },
+      "AutoContrasts": [
+        "trial_type.static",
+        "trial_type.motion" ,
+        "trial_type.response"]
+    },
+    {
+      "Level": "subject",
+      "AutoContrasts": [
+        "trial_type.static",
+        "trial_type.motion" ,
+        "trial_type.response"],
+      "Contrasts": [
+        {
+          "Name": "motion_gt_static",
+          "ConditionList": [
+            "trial_type.motion", "trial_type.static"
+          ],
+          "weights": [1, -1],
+          "type": "t"
+        }
+      ]
+    }
+  ]
+}
