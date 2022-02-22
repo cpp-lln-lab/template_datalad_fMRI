@@ -24,7 +24,7 @@ if [ ! -z "${URL_DER}" ]; then
     cd "${derivatives_dir}"
     datalad siblings add --name origin --url "${URL_DER}"
     cd "${root_dir}"
-    datalad subdatatsets --set-property gitmodule_url "${URL_DER}"
+    datalad subdatasets --set-property gitmodule_url "${URL_DER}"
 fi
 
 datalad create -d . "${preproc_dir}"
@@ -33,7 +33,7 @@ if [ ! -z "${URL_DER_PREPROC}" ]; then
     cd "${preproc_dir}"
     datalad siblings add --name origin --url "${URL_DER_PREPROC}"
     cd ..
-    datalad subdatatsets --set-property gitmodule_url "${URL_DER_PREPROC}"
+    datalad subdatasets --set-property gitmodule_url "${URL_DER_PREPROC}"
     cd "${root_dir}"
 fi
 
@@ -43,7 +43,7 @@ if [ ! -z "${URL_DER_STATS}" ]; then
     cd "${stats_dir}"
     datalad siblings add --name origin --url "${URL_DER_STATS}"
     cd ..
-    datalad subdatatsets --set-property gitmodule_url "${URL_DER_STATS}"
+    datalad subdatasets --set-property gitmodule_url "${URL_DER_STATS}"
     cd "${root_dir}"
 fi
 
