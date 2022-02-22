@@ -4,15 +4,9 @@
 source dataladConfig.sh
 
 # install raw dataset
-if [ -z "${URL_RAW}" ]; then
-    datalad create -d . \
-        inputs/raw
-
-else
-    datalad install -d . \
-        -s "${URL_RAW}" \
-        inputs/raw
-fi
+datalad install -d . \
+    -s "${URL_RAW}" \
+    inputs/raw
 
 # create the derivatives universe of classic sub-subdatasets ()
 # . outputs

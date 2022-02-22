@@ -50,7 +50,7 @@ To do so, you need to:
 2. copy each (ssh) URL of the the just created GIN repo into `dataladConfig.sh`
 3. run ` bash dataladSetUp.sh`
 
-Note that if any of the URLs in `dataladConfig` is left empty then the
+Note that if any of the URLs in `dataladConfig.sh` is left empty then the
 subdatasets will still be created but no sibling will be added and you will have
 to set the siblings manually and set the url in the parent dataset. This can be
 quite annoying so we strongly recommend creating the remote repos first.
@@ -77,10 +77,10 @@ The script `dataladSetUp.sh` as it is will:
 
 ## DEMO
 
-Clone input data: raw data set of visual localizer from the CPP lab
+Use this URL for the raw data set in `dataladConfig.sh`
 
 ```bash
-datalad clone -d . git@gin.g-node.org:/cpp-lln-lab/CPP_visMotion-raw.git inputs/raw
+git@gin.g-node.org:/cpp-lln-lab/CPP_visMotion-raw.git
 ```
 
 You will need to set up a proper alias to launch matlab from your mac or linux
