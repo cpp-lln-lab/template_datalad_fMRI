@@ -67,6 +67,7 @@ The script `dataladSetUp.sh` as it is will:
    - install sub-subdatasets for
      - `outputs/derivatives/cpp_spm-preproc`
      - `outputs/derivatives/cpp_spm-preproc`
+3. make sure that the derivatives folders are datalad datasets and not pure git repos
 
 ```bash
 .
