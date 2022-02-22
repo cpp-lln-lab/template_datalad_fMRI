@@ -1,8 +1,7 @@
-
 * annex.backend=MD5E
 **/.git* annex.largefiles=nothing
-**/.github/workflows/* annex.largefiles=nothing
 
-CHANGELOG.md annex.largefiles=nothing
-README.md annex.largefiles=nothing
-**/.pre-commit-config.yaml annex.largefiles=nothing
+.github/workflows/* annex.largefiles=nothing
+*.md annex.largefiles=nothing
+*.yaml annex.largefiles=nothing
+*.sh annex.largefiles=nothing
