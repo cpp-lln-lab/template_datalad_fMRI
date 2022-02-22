@@ -1,15 +1,15 @@
-% (C) Copyright 2021 Remi Gau
+% (C) Copyright 2019 Remi Gau
 
 clear;
 clc;
+
+FWHM = 6;
 
 % Sets up the environment for the analysis and add libraries to the path
 initEnv();
 
 %% Set options
-opt = demoGetOption();
-
-checkDependencies();
+opt = getOption();
 
 %% Run batches
 reportBIDS(opt);
@@ -19,7 +19,9 @@ bidsSTC(opt);
 
 bidsSpatialPrepro(opt);
 
-% The following do not run on octave for now (because of spmup)
 anatomicalQA(opt);
 bidsResliceTpmToFunc(opt);
 functionalQA(opt);
+
+% Smoothing to apply
+bidsSmoothing(FWHM, opt);
