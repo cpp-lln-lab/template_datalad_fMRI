@@ -1,6 +1,6 @@
 % (C) Copyright 2021 Remi Gau, Marco Barilari
 
-function opt = getOption()
+function opt = demoGetOption()
     %
     % returns a structure that contains the options chosen by the user to run
     % slice timing correction, pre-processing, subject and group level analysis.
