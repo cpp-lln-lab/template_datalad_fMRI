@@ -50,6 +50,11 @@ To do so, you need to:
 2. copy each (ssh) URL of the the just created GIN repo into `dataladConfig.sh`
 3. run ` bash dataladSetUp.sh`
 
+Note that if any of the URLs in `dataladConfig` is left empty then the
+subdatasets will still be created but no sibling will be added and you will have
+to set the siblings manually and set the url in the parent dataset. This can be
+quite annoying so we strongly recommend creating the remote repos first.
+
 These scripts can be modified to everyone needs (eg also add into derivatives
 `fmriprep` or `mriqc` or `freesurfer` or etc.).
 
