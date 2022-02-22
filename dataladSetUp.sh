@@ -49,7 +49,8 @@ fi
 
 if [ "${USE_CPP_SPM_DEV}" = true ]; then
     cd code/lib/CPP_SPM
-    git checkout -b origin/dev
+    git checkout origin/dev
+    git switch -c dev
     cd "${root_dir}"
     datalad save -m 'switch CPP SPM to dev branch'
 fi
