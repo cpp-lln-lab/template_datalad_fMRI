@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 root_dir=${PWD}
-raw_dir=${root_dir}inputs/raw
+raw_dir=${root_dir}/inputs/raw
 derivatives_dir=${root_dir}/outputs/derivatives
 preproc_dir=${derivatives_dir}/cpp_spm-preproc
 stats_dir=${derivatives_dir}/cpp_spm-stats
