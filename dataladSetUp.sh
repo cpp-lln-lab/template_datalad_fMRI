@@ -1,61 +1,54 @@
 #!/usr/bin/env bash
 
-start_dir=${PWD}
+root_dir=${PWD}
+raw_dir=${root_dir}inputs/raw
+derivatives_dir=${root_dir}/outputs/derivatives
+preproc_dir=${derivatives_dir}/cpp_spm-preproc
+stats_dir=${derivatives_dir}/cpp_spm-stats
 
 # get url of the gin repos
 source dataladConfig.sh
 
 # install raw dataset
-datalad install -d . \
-    -s "${URL_RAW}" \
-    inputs/raw
+datalad install -d . -s "${URL_RAW}" "${raw_dir}"
 
 # create the derivatives universe of classic sub-subdatasets ()
-# if we install them from somewhere we make sure they are turned in datalad
-# dataets, in case they were set up on GIN as pure git repos.
 # . outputs
 # └── derivatives
 #     ├── cpp_spm-preproc
 #     └── cpp_spm-stats
 
-if [ -z "${URL_DER}" ]; then
-    datalad create -d . \
-        outputs/derivatives
-else
-    datalad install -d . \
-        -s "${URL_DER}" \
-        outputs/derivatives
-    cd outputs/derivatives
-    datalad create --force .
-    cd "${start_dir}"
+datalad create -d . "${derivatives_dir}"
+
+if [ ! -z "${URL_DER}" ]; then
+    cd "${derivatives_dir}"
+    datalad siblings add --name origin --url "${URL_DER}"
+    cd "${root_dir}"
+    datalad subdatatsets --set-property gitmodule_url "${URL_DER}"
 fi
 
-if [ -z "${URL_DER_PREPROC}" ]; then
-    datalad create -d . \
-        outputs/derivatives/cpp_spm-preproc
-else
-    datalad install -d . \
-        -s "${URL_DER_PREPROC}" \
-        outputs/derivatives/cpp_spm-preproc
-    cd outputs/derivatives/cpp_spm-preproc
-    datalad create --force .
-    cd "${start_dir}"
+datalad create -d . "${preproc_dir}"
+
+if [ ! -z "${URL_DER_PREPROC}" ]; then
+    cd "${preproc_dir}"
+    datalad siblings add --name origin --url "${URL_DER_PREPROC}"
+    cd ..
+    datalad subdatatsets --set-property gitmodule_url "${URL_DER_PREPROC}"
+    cd "${root_dir}"
 fi
 
-if [ -z "${URL_DER_STATS}" ]; then
-    datalad create -d . \
-        outputs/derivatives/cpp_spm-stats
-else
-    datalad install -d . \
-        -s "${URL_DER_STATS}" \
-        outputs/derivatives/cpp_spm-stats
-    cd outputs/derivatives/cpp_spm-stats
-    datalad create --force .
-    cd "${start_dir}"
+datalad create -d . "${stats_dir}"
+
+if [ ! -z "${URL_DER_STATS}" ]; then
+    cd "${stats_dir}"
+    datalad siblings add --name origin --url "${URL_DER_STATS}"
+    cd ..
+    datalad subdatatsets --set-property gitmodule_url "${URL_DER_STATS}"
+    cd "${root_dir}"
 fi
 
 datalad push --to origin -r
 
-echo ############################
-echo # DATALAD IS READY TO WORK #
-echo ############################
+echo "############################"
+echo "# DATALAD IS READY TO WORK #"
+echo "############################"
