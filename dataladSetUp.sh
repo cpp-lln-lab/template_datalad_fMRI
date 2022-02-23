@@ -51,6 +51,7 @@ if [ "${USE_CPP_SPM_DEV}" = true ]; then
     cd code/lib/CPP_SPM
     git checkout origin/dev
     git switch -c dev
+    git submodule update --init --recursive && git submodule update --recursive
     cd "${root_dir}"
     datalad save -m 'switch CPP SPM to dev branch'
 fi
