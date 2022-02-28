@@ -33,7 +33,7 @@ if [ ! -z "${URL_DER_PREPROC}" ]; then
     cd "${preproc_dir}"
     datalad siblings add --name origin --url "${URL_DER_PREPROC}"
     cd ..
-    datalad subdatasets --set-property url "${URL_DER_PREPROC}"
+    datalad subdatasets --set-property url "${URL_DER_PREPROC}" cpp_spm-preproc
     cd "${root_dir}"
 fi
 
@@ -43,7 +43,7 @@ if [ ! -z "${URL_DER_STATS}" ]; then
     cd "${stats_dir}"
     datalad siblings add --name origin --url "${URL_DER_STATS}"
     cd ..
-    datalad subdatasets --set-property url "${URL_DER_STATS}"
+    datalad subdatasets --set-property url "${URL_DER_STATS}" cpp_spm-stats
     cd "${root_dir}"
 fi
 
