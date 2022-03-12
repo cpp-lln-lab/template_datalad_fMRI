@@ -5,10 +5,15 @@
   - [Freesurfer licence](#freesurfer-licence)
   - [Configuration](#configuration)
   - [Run with Docker](#run-with-docker)
+    - [Notes](#notes)
   - [Run with singularity](#run-with-singularity)
   - [Running with datalad (WIP)](#running-with-datalad-wip)
     - [Install container image as subdataset](#install-container-image-as-subdataset)
     - [Use datalad to call fmriprep](#use-datalad-to-call-fmriprep)
+
+fmriprep doc: https://fmriprep.org/en/21.0.1/index.html
+
+nipreps doc: https://www.nipreps.org/
 
 ## Requirements
 
@@ -45,10 +50,15 @@ Some common variables to run fmriprep can be set in
 from `code/fmriprep`
 
 ```bash
-sub_id="pilot001"
+sub_id=FIXME
 
-sh fmriprepDocker.sh $sub_id
+bash fmriprepDocker.sh $sub_id
 ```
+
+### Notes
+
+Note using the docker argument `--user "$(id -u):$(id -g)"` may not work because
+might not able to create the directories in the `derivatives` folder.
 
 ## Run with singularity
 
@@ -56,9 +66,12 @@ See nipreps doc: https://www.nipreps.org/apps/singularity/
 
 Build singularity image:
 
-```
-singularity build   code/images/fmriprep-21.0.1.simg \
-                    docker://nipreps/fmriprep:21.0.1
+```bash
+#load variables from config
+source fmriprepConfig.sh
+
+singularity build   code/images/fmriprep-${VERSION}.simg \
+                    docker://nipreps/fmriprep:${VERSION}
 ```
 
 ## Running with datalad (WIP)
