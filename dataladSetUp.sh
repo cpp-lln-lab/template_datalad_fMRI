@@ -6,7 +6,7 @@ derivatives_dir=${root_dir}/outputs/derivatives
 preproc_dir=${derivatives_dir}/cpp_spm-preproc
 stats_dir=${derivatives_dir}/cpp_spm-stats
 
-# get url of the gin repos
+# get url of the gin repos from config
 source dataladConfig.sh
 
 # install raw dataset

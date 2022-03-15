@@ -70,8 +70,8 @@ Build singularity image:
 #load variables from config
 source fmriprepConfig.sh
 
-singularity build   code/images/fmriprep-${VERSION}.simg \
-                    docker://nipreps/fmriprep:${VERSION}
+singularity build ../images/fmriprep-${VERSION}.simg \
+                  docker://nipreps/fmriprep:${VERSION}
 ```
 
 ## Running with datalad (WIP)
@@ -82,8 +82,11 @@ https://github.com/psychoinformatics-de/fairly-big-processing-workflow/blob/main
 
 ### Install container image as subdataset
 
+TODO
+- how to `source` info from `code/fmriprep/fmriprepConfig.sh`? Is this a ZSH issue?
+
 ```bash
-container_name='bids-fmriprep'
+container_name="bids-fmriprep"
 container="https://github.com/ReproNim/containers.git"
 
 # clone the container-dataset as a subdataset.
@@ -98,25 +101,31 @@ datalad clone -d . "${container}" code/pipeline
 # in a separate script, and does not need modifications if you stick to
 # fmriprep.
 
+VERSION="21.0.1"
+
 datalad containers-add \
   --call-fmt 'singularity exec -B {{pwd}} --cleanenv {img} {cmd}' \
-  -i code/pipeline/images/bids/bids-fmriprep--20.2.0.sing \
+  -i code/pipeline/images/bids/bids-fmriprep--"${VERSION}".sing \
   $container_name
 ```
 
 ### Use datalad to call fmriprep
 
+TODO
+- how to `source` info from `code/fmriprep/fmriprepConfig.sh`? Is this a ZSH issue?
+- how to pass several output_spaces at once?
+
 ```bash
-sub_id="pilot001"
-task_id='retino'
+sub_id="con07"
+OUTPUT_SPACES='MNI152NLin2009cAsym'
+TASK_ID="visMotion"
 
 datalad containers-run \
   -m "Compute ${subid}" \
   --container-name bids-fmriprep \
   --explicit \
   --output outputs/derivatives \
-  --input inputs/raw/sub-$sub_id/ses-001/anat \
-  --input inputs/raw/sub-$sub_id/ses-002/func/*${task_id}* \
+  --input inputs/raw/sub-$sub_id/ \
   --input code/license.txt \
-  "sh code/runfmriprep.sh $sub_id"
+  "sh code/fmriprep/fmriprepDatalad.sh $sub_id $TASK_ID $OUTPUT_SPACES"
 ```
