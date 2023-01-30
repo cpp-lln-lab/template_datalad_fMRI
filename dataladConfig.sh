@@ -11,15 +11,15 @@ URL_RAW=''
 URL_DER=''
 
 # derivatives/preproc sibling url
-# for DEMO use: git@gin.g-node.org:/cpp_brewery/CPP_visMotion-cpp_spm-preproc.git
+# for DEMO use: git@gin.g-node.org:/cpp_brewery/CPP_visMotion-bidspm-preproc.git
 URL_DER_PREPROC=''
 
 # derivatives/stats sibling url
-# for DEMO use: git@gin.g-node.org:/cpp_brewery/CPP_visMotion-cpp_spm-stats.git
+# for DEMO use: git@gin.g-node.org:/cpp_brewery/CPP_visMotion-bidspm-stats.git
 URL_DER_STATS=''
 
 # set to "true" instead of "false" if you want to use the bleeding edge version of CPP SPM
-USE_CPP_SPM_DEV=false
+USE_BIDSPM_DEV=false
 
 
 if [ -z "${URL_RAW}" ]; then
