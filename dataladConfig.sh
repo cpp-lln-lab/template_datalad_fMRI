@@ -18,6 +18,10 @@ URL_DER_PREPROC=''
 # for DEMO use: git@gin.g-node.org:/cpp_brewery/CPP_visMotion-bidspm-stats.git
 URL_DER_STATS=''
 
+# GIN base name 
+# to create siblings automatically for each new repo (i.e.  analysis_visualMotionLoc)
+GIN_BASENAME=''
+
 # set to "true" instead of "false" if you want to use the bleeding edge version of CPP SPM
 USE_BIDSPM_DEV=false
 

@@ -25,6 +25,11 @@ if [ ! -z "${URL_DER}" ]; then
     datalad siblings add --name origin --url "${URL_DER}"
     cd "${root_dir}"
     datalad subdatasets --set-property url "${URL_DER}" "${derivatives_dir}"
+elif [ ! -z "${GIN_BASENAME}" ]; then
+    cd "${derivatives_dir}"
+    datalad create-sibling-gin -d . -s origin --access-protocol ssh --private  cpp_brewery/"${GIN_BASENAME}"-derivatives
+    cd "${root_dir}"
+    datalad subdatasets --set-property url https://gin.g-node.org/cpp_brewery/"${GIN_BASENAME}"-derivatives "${derivatives_dir}"
 fi
 
 datalad create -d . "${preproc_dir}"
@@ -35,6 +40,11 @@ if [ ! -z "${URL_DER_PREPROC}" ]; then
     cd ..
     datalad subdatasets --set-property url "${URL_DER_PREPROC}" bidspm-preproc
     cd "${root_dir}"
+elif [ ! -z "${GIN_BASENAME}" ]; then
+    cd "${preproc_dir}"
+    datalad create-sibling-gin -d . -s origin --access-protocol ssh --private  cpp_brewery/"${GIN_BASENAME}"-derivatives-bidspm-preproc
+    cd "${root_dir}"
+    datalad subdatasets --set-property url https://gin.g-node.org/cpp_brewery/"${GIN_BASENAME}"-derivatives-bidspm-preproc bidspm-preproc
 fi
 
 datalad create -d . "${stats_dir}"
@@ -45,6 +55,11 @@ if [ ! -z "${URL_DER_STATS}" ]; then
     cd ..
     datalad subdatasets --set-property url "${URL_DER_STATS}" bidspm-stats
     cd "${root_dir}"
+elif [ ! -z "${GIN_BASENAME}" ]; then
+    cd "${stats_dir}"
+    datalad create-sibling-gin -d . -s origin --access-protocol ssh --private  cpp_brewery/"${GIN_BASENAME}"-derivatives-bidspm-stats
+    cd "${root_dir}"
+    datalad subdatasets --set-property url https://gin.g-node.org/cpp_brewery/"${GIN_BASENAME}"-derivatives-bidspm-stats bidspm-stats
 fi
 
 if [ "${USE_BIDSPM_DEV}" = true ]; then
@@ -53,7 +68,7 @@ if [ "${USE_BIDSPM_DEV}" = true ]; then
     git switch -c dev
     git submodule update --init --recursive && git submodule update --recursive
     cd "${root_dir}"
-    datalad save -m 'switch CPP SPM to dev branch'
+    datalad save -m 'switch bidspm to dev branch'
 fi
 
 datalad push --to origin -r
