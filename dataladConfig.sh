@@ -22,10 +22,6 @@ URL_DER_STATS=''
 # to create siblings automatically for each new repo (i.e.  analysis_visualMotionLoc)
 GIN_BASENAME=''
 
-# set to "true" instead of "false" if you want to use the bleeding edge version of CPP SPM
-USE_BIDSPM_DEV=false
-
-
 if [ -z "${URL_RAW}" ]; then
     echo "Error: the URL for the raw cannot be empty"
     exit 1

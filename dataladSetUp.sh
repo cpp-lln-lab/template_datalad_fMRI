@@ -62,15 +62,6 @@ elif [ ! -z "${GIN_BASENAME}" ]; then
     datalad subdatasets --set-property url https://gin.g-node.org/cpp_brewery/"${GIN_BASENAME}"-derivatives-bidspm-stats bidspm-stats
 fi
 
-if [ "${USE_BIDSPM_DEV}" = true ]; then
-    cd code/lib/bidspm
-    git checkout origin/dev
-    git switch -c dev
-    git submodule update --init --recursive && git submodule update --recursive
-    cd "${root_dir}"
-    datalad save -m 'switch bidspm to dev branch'
-fi
-
 datalad push --to origin -r
 
 echo "############################"
