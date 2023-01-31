@@ -11,16 +11,16 @@ URL_RAW=''
 URL_DER=''
 
 # derivatives/preproc sibling url
-# for DEMO use: git@gin.g-node.org:/cpp_brewery/CPP_visMotion-cpp_spm-preproc.git
+# for DEMO use: git@gin.g-node.org:/cpp_brewery/CPP_visMotion-bidspm-preproc.git
 URL_DER_PREPROC=''
 
 # derivatives/stats sibling url
-# for DEMO use: git@gin.g-node.org:/cpp_brewery/CPP_visMotion-cpp_spm-stats.git
+# for DEMO use: git@gin.g-node.org:/cpp_brewery/CPP_visMotion-bidspm-stats.git
 URL_DER_STATS=''
 
-# set to "true" instead of "false" if you want to use the bleeding edge version of CPP SPM
-USE_CPP_SPM_DEV=false
-
+# GIN base name
+# to create siblings automatically for each new repo (i.e.  analysis_visualMotionLoc)
+GIN_BASENAME=''
 
 if [ -z "${URL_RAW}" ]; then
     echo "Error: the URL for the raw cannot be empty"
