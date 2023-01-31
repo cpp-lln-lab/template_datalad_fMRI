@@ -20,12 +20,7 @@ datalad install -d . -s "${URL_RAW}" "${raw_dir}"
 
 datalad create -d . "${derivatives_dir}"
 
-if [ ! -z "${URL_DER}" ]; then
-    cd "${derivatives_dir}"
-    datalad siblings add --name origin --url "${URL_DER}"
-    cd "${root_dir}"
-    datalad subdatasets --set-property url "${URL_DER}" "${derivatives_dir}"
-elif [ ! -z "${GIN_BASENAME}" ]; then
+if [ ! -z "${GIN_BASENAME}" ]; then
     cd "${derivatives_dir}"
     datalad create-sibling-gin -d . -s origin --access-protocol ssh --private  cpp_brewery/"${GIN_BASENAME}"-derivatives
     cd "${root_dir}"
@@ -34,13 +29,7 @@ fi
 
 datalad create -d . "${preproc_dir}"
 
-if [ ! -z "${URL_DER_PREPROC}" ]; then
-    cd "${preproc_dir}"
-    datalad siblings add --name origin --url "${URL_DER_PREPROC}"
-    cd ..
-    datalad subdatasets --set-property url "${URL_DER_PREPROC}" bidspm-preproc
-    cd "${root_dir}"
-elif [ ! -z "${GIN_BASENAME}" ]; then
+if [ ! -z "${GIN_BASENAME}" ]; then
     cd "${preproc_dir}"
     datalad create-sibling-gin -d . -s origin --access-protocol ssh --private  cpp_brewery/"${GIN_BASENAME}"-derivatives-bidspm-preproc
     cd "${root_dir}"
@@ -49,13 +38,7 @@ fi
 
 datalad create -d . "${stats_dir}"
 
-if [ ! -z "${URL_DER_STATS}" ]; then
-    cd "${stats_dir}"
-    datalad siblings add --name origin --url "${URL_DER_STATS}"
-    cd ..
-    datalad subdatasets --set-property url "${URL_DER_STATS}" bidspm-stats
-    cd "${root_dir}"
-elif [ ! -z "${GIN_BASENAME}" ]; then
+if [ ! -z "${GIN_BASENAME}" ]; then
     cd "${stats_dir}"
     datalad create-sibling-gin -d . -s origin --access-protocol ssh --private  cpp_brewery/"${GIN_BASENAME}"-derivatives-bidspm-stats
     cd "${root_dir}"
