@@ -24,28 +24,40 @@ if [ ! -z "${GIN_BASENAME}" ]; then
     cd "${derivatives_dir}"
     datalad create-sibling-gin -d . -s origin --access-protocol ssh --private  cpp_brewery/"${GIN_BASENAME}"-derivatives
     cd "${root_dir}"
-    datalad subdatasets --set-property url https://gin.g-node.org/cpp_brewery/"${GIN_BASENAME}"-derivatives "${derivatives_dir}"
+    datalad subdatasets --set-property url git@gin.g-node.org:/cpp_brewery/"${GIN_BASENAME}"-derivatives.git "${derivatives_dir}"
 fi
+
+cd "${derivatives_dir}"
 
 datalad create -d . "${preproc_dir}"
 
 if [ ! -z "${GIN_BASENAME}" ]; then
     cd "${preproc_dir}"
     datalad create-sibling-gin -d . -s origin --access-protocol ssh --private  cpp_brewery/"${GIN_BASENAME}"-derivatives-bidspm-preproc
-    cd "${root_dir}"
-    datalad subdatasets --set-property url https://gin.g-node.org/cpp_brewery/"${GIN_BASENAME}"-derivatives-bidspm-preproc bidspm-preproc
+    cd "${derivatives_dir}"
+    datalad subdatasets --set-property url git@gin.g-node.org:/cpp_brewery/"${GIN_BASENAME}"-derivatives-bidspm-preproc.git bidspm-preproc
 fi
+
+cd "${derivatives_dir}"
 
 datalad create -d . "${stats_dir}"
 
 if [ ! -z "${GIN_BASENAME}" ]; then
     cd "${stats_dir}"
     datalad create-sibling-gin -d . -s origin --access-protocol ssh --private  cpp_brewery/"${GIN_BASENAME}"-derivatives-bidspm-stats
-    cd "${root_dir}"
-    datalad subdatasets --set-property url https://gin.g-node.org/cpp_brewery/"${GIN_BASENAME}"-derivatives-bidspm-stats bidspm-stats
+    cd "${derivatives_dir}"
+    datalad subdatasets --set-property url git@gin.g-node.org:/cpp_brewery/"${GIN_BASENAME}"-derivatives-bidspm-stats.git bidspm-stats
 fi
 
+cd "${derivatives_dir}"
+
 datalad push --to origin -r
+
+cd "${root_dir}"
+
+datalad save -m "add code and folders to set subdatasets"
+
+datalad push --to origin
 
 echo "############################"
 echo "# DATALAD IS READY TO WORK #"
