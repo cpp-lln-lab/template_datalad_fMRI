@@ -62,6 +62,3 @@ datalad push --to origin
 echo "############################"
 echo "# DATALAD IS READY TO WORK #"
 echo "############################"
-
-
-
